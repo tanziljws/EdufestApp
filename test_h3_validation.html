@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test H-3 Validation</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .test { margin: 10px 0; padding: 10px; border: 1px solid #ddd; }
+        .valid { background: #d4edda; }
+        .invalid { background: #f8d7da; }
+    </style>
+</head>
+<body>
+    <h1>Test H-3 Validation Logic</h1>
+    <div id="results"></div>
+
+    <script>
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        console.log('Today:', today.toLocaleDateString('id-ID'));
+        
+        const testCases = [
+            { date: '2025-11-06', label: 'Hari ini (06/11)', expectedValid: false },
+            { date: '2025-11-07', label: 'H-1 (07/11)', expectedValid: false },
+            { date: '2025-11-08', label: 'H-2 (08/11)', expectedValid: false },
+            { date: '2025-11-09', label: 'H-3 (09/11)', expectedValid: true },
+            { date: '2025-11-10', label: 'H-4 (10/11)', expectedValid: true },
+            { date: '2025-11-13', label: 'H-7 (13/11)', expectedValid: true },
+        ];
+        
+        const results = testCases.map(test => {
+            const eventDate = new Date(test.date + 'T00:00:00');
+            const diffTime = eventDate - today;
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            const isValid = diffDays >= 3;
+            const passed = isValid === test.expectedValid;
+            
+            return {
+                ...test,
+                diffDays,
+                isValid,
+                passed
+            };
+        });
+        
+        const html = results.map(r => `
+            <div class="test ${r.passed ? 'valid' : 'invalid'}">
+                <strong>${r.label}</strong><br>
+                Date: ${r.date}<br>
+                Diff Days: ${r.diffDays}<br>
+                Is Valid (>= 3): ${r.isValid}<br>
+                Expected: ${r.expectedValid}<br>
+                <strong>Test: ${r.passed ? '✅ PASS' : '❌ FAIL'}</strong>
+            </div>
+        `).join('');
+        
+        document.getElementById('results').innerHTML = html;
+        
+        console.table(results);
+    </script>
+</body>
+</html>

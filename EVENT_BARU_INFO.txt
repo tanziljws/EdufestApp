@@ -1,0 +1,18 @@
+=== EVENT TEST SERTIFIKAT (BARU) ===
+
+Dibuat: 2025-10-24 06:29:03
+
+LOGIN:
+Email: user.test@edufest.com
+Password: password
+
+EVENT:
+ID: 51
+URL: http://localhost:3000/events/51
+
+TOKEN: CERTOZJCDJ
+
+STATUS:
+✓ Event sudah dimulai
+✓ User sudah terdaftar
+✓ Bisa langsung absen

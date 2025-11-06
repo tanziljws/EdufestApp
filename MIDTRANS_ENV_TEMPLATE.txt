@@ -1,0 +1,99 @@
+╔════════════════════════════════════════════════════════════╗
+║           MIDTRANS ENVIRONMENT CONFIGURATION               ║
+╚════════════════════════════════════════════════════════════╝
+
+📝 COPY & PASTE INI KE FILE .env ANDA
+
+
+═══════════════════════════════════════════════════════════
+  LARAVEL .env (laravel-event-app/.env)
+═══════════════════════════════════════════════════════════
+
+# Midtrans Configuration
+MIDTRANS_SERVER_KEY=SB-Mid-server-xxxxxxxxxxxxxxxx
+MIDTRANS_CLIENT_KEY=SB-Mid-client-xxxxxxxxxxxxxxxx
+MIDTRANS_IS_PRODUCTION=false
+MIDTRANS_IS_SANITIZED=true
+MIDTRANS_IS_3DS=true
+
+
+═══════════════════════════════════════════════════════════
+  REACT .env (frontend-react.js/.env)
+═══════════════════════════════════════════════════════════
+
+# Midtrans Configuration
+REACT_APP_MIDTRANS_CLIENT_KEY=SB-Mid-client-xxxxxxxxxxxxxxxx
+
+
+═══════════════════════════════════════════════════════════
+  INSTRUCTIONS
+═══════════════════════════════════════════════════════════
+
+1. Login ke Midtrans Dashboard:
+   🔗 https://dashboard.sandbox.midtrans.com
+
+2. Go to: Settings → Access Keys
+
+3. Copy credentials:
+   📋 Server Key: SB-Mid-server-...
+   📋 Client Key: SB-Mid-client-...
+
+4. Replace "xxxxxxxxxxxxxxxx" dengan credentials Anda
+
+5. Save files
+
+6. Run commands:
+   php artisan config:clear
+   php artisan cache:clear
+
+7. Restart servers:
+   - Laravel: Ctrl+C → php artisan serve
+   - React: Ctrl+C → npm start
+
+8. Verify setup:
+   php setup_midtrans.php
+
+
+═══════════════════════════════════════════════════════════
+  EXAMPLE (SANDBOX)
+═══════════════════════════════════════════════════════════
+
+MIDTRANS_SERVER_KEY=SB-Mid-server-abc123def456ghi789jkl012
+MIDTRANS_CLIENT_KEY=SB-Mid-client-mno345pqr678stu901vwx234
+MIDTRANS_IS_PRODUCTION=false
+
+
+═══════════════════════════════════════════════════════════
+  PRODUCTION
+═══════════════════════════════════════════════════════════
+
+Untuk production, ganti:
+- Server Key: Mid-server-... (tanpa "SB-")
+- Client Key: Mid-client-... (tanpa "SB-")
+- MIDTRANS_IS_PRODUCTION=true
+
+
+═══════════════════════════════════════════════════════════
+  SECURITY NOTES
+═══════════════════════════════════════════════════════════
+
+⚠️  JANGAN commit .env ke Git!
+⚠️  JANGAN share Server Key ke public!
+⚠️  JANGAN gunakan production key untuk testing!
+✅  Gunakan HTTPS di production
+✅  Enable 3D Secure (MIDTRANS_IS_3DS=true)
+
+
+═══════════════════════════════════════════════════════════
+  NEED HELP?
+═══════════════════════════════════════════════════════════
+
+📖 Full Guide: MIDTRANS_SETUP_GUIDE.md
+🚀 Quick Start: MIDTRANS_QUICK_START.md
+🔧 Verify: php setup_midtrans.php
+📞 Support: https://docs.midtrans.com
+
+
+╔════════════════════════════════════════════════════════════╗
+║                  HAPPY CODING! 🚀                          ║
+╚════════════════════════════════════════════════════════════╝
